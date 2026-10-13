@@ -1,0 +1,49 @@
+name: OpenRail
+version: '${version}'
+main: dev.openrail.OpenRailPlugin
+api-version: '26.1'
+description: Automatic minecart routing between named stations over a network built from the rails themselves.
+softdepend: [BlueMap]
+
+commands:
+  dest:
+    description: Set (or clear) the station you're travelling to.
+    usage: "/<command> [station]"
+    permission: openrail.dest
+    aliases: [destination]
+  stations:
+    description: List stations, nearest first.
+    usage: "/<command> [search] [page]"
+    permission: openrail.stations
+  railmap:
+    description: Info about the rail line you're on (admins can also follow every line again).
+    usage: "/<command> [info|retrace]"
+    permission: openrail.railmap
+  copperrails:
+    description: Turn the copper rail speed effect on or off.
+    usage: "/<command> <true|false>"
+    permission: openrail.admin
+  coppermultiplier:
+    description: Set the top-speed multiplier for a copper oxidation stage.
+    usage: "/<command> <unoxidized|exposed|weathered|oxidized> <multiplier>"
+    permission: openrail.admin
+
+permissions:
+  openrail.dest:
+    description: Use /dest to set a rail destination.
+    default: true
+  openrail.junction.create:
+    description: Create [junction] signs.
+    default: true
+  openrail.station.create:
+    description: Create [station] signs.
+    default: true
+  openrail.stations:
+    description: Use /stations.
+    default: true
+  openrail.railmap:
+    description: Use /railmap info.
+    default: true
+  openrail.admin:
+    description: Use /copperrails, /coppermultiplier and /railmap retrace.
+    default: op
